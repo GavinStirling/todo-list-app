@@ -1,0 +1,30 @@
+.task {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid black;
+
+    margin: 0.5em 0;
+
+    &__left {
+        display: flex;
+        align-items: center;
+    }
+
+    &__label {
+        display: flex;
+        flex-wrap: wrap;
+        word-break: break-all;
+    }
+
+    &__delete-img {
+        width: 1em;
+    }
+}
+
+.completed {
+    text-decoration: line-through;
+}
