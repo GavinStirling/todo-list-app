@@ -5,7 +5,7 @@ import "./Task.scss";
 import deleteIcon from "../../assets/images/delete.png";
 
 const Task = (props) => {
-    const { taskName } = props;
+    const { index, onRemove, taskName } = props;
     const [checked, setChecked] = useState(false);
 
     const handleCheckBox = () => {
@@ -51,8 +51,10 @@ const Task = (props) => {
 
             <img
                 className="task__delete-img"
+                id={index}
                 src={deleteIcon}
                 alt="Delete Task"
+                onClick={onRemove}
             />
         </div>
     );
