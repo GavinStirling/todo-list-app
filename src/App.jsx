@@ -1,6 +1,6 @@
 import "./App.scss";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Header from "./containers/Header/Header";
 import AddTask from "./components/AddTask/AddTask";
@@ -8,7 +8,7 @@ import Tasks from "./containers/Tasks/Tasks";
 import NoTasks from "./components/NoTasks/NoTasks";
 
 const App = () => {
-    const [taskArray, setTaskArray] = useState([1, 2, 3, 4, 5]);
+    const [taskArray, setTaskArray] = useState([]);
     const [areTasks, setAreTasks] = useState(false);
 
     const handleAddTasks = (event) => {
@@ -16,8 +16,12 @@ const App = () => {
         if (taskArray) {
             setAreTasks(true);
             const task = event.target.task.value;
-            addTask(task);
-            event.target.task.value = "";
+            if (task !== "") {
+                addTask(task);
+                event.target.task.value = null;
+            } else {
+                alert("Enter a task to create an item on your todo list!");
+            }
         }
     };
 
@@ -36,8 +40,7 @@ const App = () => {
     };
 
     const checkEmpty = () => {
-      const tempArray = [...taskArray];
-        if (!tempArray) {
+        if (taskArray.length - 1 === 0) {
             setAreTasks(false);
         }
     };
@@ -46,8 +49,6 @@ const App = () => {
         setTaskArray([]);
         setAreTasks(false);
     };
-
-
 
     return (
         <div className="App">
